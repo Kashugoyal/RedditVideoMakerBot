@@ -249,6 +249,13 @@ def make_final_video(
                     y="(main_h-overlay_h)/2",
                 )
                 current_time += audio_clips_durations[i]
+            background_clip = background_clip.overlay(
+                image_clips[-1],
+                enable=f"between(t,{current_time},{current_time + audio_clips_durations[-1]})",
+                x="(main_w-overlay_w)/2",
+                y="(main_h-overlay_h)/2",
+            )
+
     else:
         for i in range(0, number_of_clips + 1):
             image_clips.append(
